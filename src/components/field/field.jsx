@@ -1,15 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+/*eslint-disabled*/
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { GameContext } from '../../context/game_context';
 import Item from '../item/item';
 import styles from './field.module.css';
 
 const CARROT_SIZE = 80;
 
-const Field = ({ start, carrotCount, bugCount, handleScore }) => {
+const Field = ({ carrotCount, bugCount }) => {
+  const { handleScore, stopGame, start, sec, score } = useContext(GameContext);
   const fieldRef = useRef();
   const [carrots, setCarrots] = useState([]);
   const [bugs, setBugs] = useState([]);
   const carrotPath = 'img/carrot.png';
   const bugPath = 'img/bug.png';
+
+  const clearItems = () => {
+    setCarrots([]);
+    setBugs([]);
+  };
 
   const handleClick = (e) => {
     if (e.target.dataset.item === 'carrot') {
@@ -19,6 +27,9 @@ const Field = ({ start, carrotCount, bugCount, handleScore }) => {
       });
       setCarrots(newCarrots);
       handleScore();
+    } else if (e.target.dataset.item === 'bug') {
+      stopGame('lose');
+      clearItems();
     }
   };
 
@@ -28,8 +39,20 @@ const Field = ({ start, carrotCount, bugCount, handleScore }) => {
       const height = fieldRef.current.offsetHeight;
       setCarrots(createItems('carrot', carrotPath, carrotCount, width, height));
       setBugs(createItems('bug', bugPath, bugCount, width, height));
+    } else {
+      clearItems();
     }
   }, [start, carrotCount, bugCount]);
+
+  useEffect(() => {
+    if (score === carrotCount) {
+      stopGame('win');
+      clearItems();
+    } else if (sec === 0) {
+      stopGame('lose');
+      clearItems();
+    }
+  }, [sec, score]);
 
   return (
     <div ref={fieldRef} className={styles.field} onClick={handleClick}>
