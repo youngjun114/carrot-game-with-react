@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.play_btn {
+  width: 60px;
+  height: 60px;
+  background-color: wheat;
+  border: 4px solid black;
+  font-size: 20px;
+  transition: transform 300ms ease-in;
+}
+
+.play_btn:hover {
+  transform: scale(1.2);
+}
+
+.timer {
+  width: 100px;
+  background-color: white;
+  text-align: center;
+  border: 5px solid black;
+  margin-top: 8px;
+  font-size: 32px;
+  border-radius: 20px;
+  user-select: none;
+  cursor: auto;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  font-size: 36px;
+  background-color: darksalmon;
+  border-radius: 50%;
+  color: white;
+  border: 3px solid black;
+  user-select: none;
+  cursor: auto;
+}

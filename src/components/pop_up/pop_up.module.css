@@ -1,0 +1,29 @@
+.pop_up {
+  width: 400px;
+  height: 140px;
+  padding: 20px;
+  background-color: #00000090;
+  color: white;
+  text-align: center;
+  margin: auto;
+  transform: translateY(-150%);
+  border-radius: 20px;
+}
+
+.refresh_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 60px;
+  height: 60px;
+  font-size: 42px;
+  background-color: wheat;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.message {
+  display: block;
+  font-size: 38px;
+}

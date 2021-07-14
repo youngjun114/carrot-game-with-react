@@ -1,0 +1,9 @@
+.item {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 100ms ease-in;
+}
+
+.item:hover {
+  transform: scale(1.1);
+}
